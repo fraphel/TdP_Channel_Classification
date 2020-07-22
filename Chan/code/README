@@ -1,0 +1,57 @@
+###############################
+# SPARSE DOCKSI DOCUMENTATION #
+###############################
+
+Python version: >=3
+
+#--------------------------------------------------------------------------------------------
+Modules needed:
+
+        - Scipy.
+        - Numpy.
+        - Scikit-Learn.
+        - configparser.
+        
+#--------------------------------------------------------------------------------------------
+
+Files:
+	- cma.py: to run CMA-ES.
+	- ioBin.py: to read binary file.
+	- configDOCKSI.ini: config file which contains user parameters.
+	- runDOCKSI.py: prepare data and run CMA-ES.
+	- computeScore_loc.py: compute classification score.
+
+Command line to run:
+	python3 runDOCKSI.py configDOCKSI.ini
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+configDOCKSI.ini file:
+	Divided in 4 parts:
+		-[CMAES]:
+			-sigma: <double>. Initial standard deviation.
+			-tolfun: <double>. Convergence parameter to stop CMA-ES process.
+
+		-[DOCKSI]:
+			-dimProj: <int>. Projection space.
+			-numComp: <int>. Number of the component.
+			-outputDim: <int>. Number of outputs in the classification (not necessary equal to len(np.unique(labels))).
+			-nbProcs: <int>. Number of procs.
+			-lenTrainer: <int>. Size of the trainer (the trainer will be divided into train/test for the cross-validation). The rest of the data is used for the validation.
+			-useCorrelation: <bool>. Can be used only if numComp>1. Take into account variables with a low correlation coefficient only (win of time).
+			-threshold: <double>. Correlation coefficient threshold.
+
+		-[Classification]:
+			-type: <str>=lda, knn, nn or svm. Classification algorithm used.
+			-kernel: <str>. Only in svm case. See Scikit-learn documentation.
+			-degree: <int>. Only in svm case. See Scikit-learn documentation.
+			-validation: <str>='BS'. Bootstrap sampling cross-validation. Useless at this moment.
+			-dataType: <str>=Full, FP or Ca. Signal used.
+
+		-[Directories]:
+			-dirDat: <str>. Directory where the dictionary entries are stored.
+			-fileLab: <str>. File path where the output labels are stored.
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+
+
+
