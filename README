@@ -1,0 +1,5 @@
+Here, you can find the three different study cases:
+
+- Binary classification of ion-channel blockade (X: yes/no for X = Na, K or Ca).
+- Ternary classification of ion-channel blockade (Na, K or Ca).
+- TdP risk classification (yes/no).
